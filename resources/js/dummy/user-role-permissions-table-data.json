@@ -1,0 +1,22 @@
+{
+    "headers": {
+        "data": ["no", "user", "role", "created_at", "actions"],
+        "styles": {
+            "no": ["text-center", "text-nowrap"],
+            "user": ["text-left", "text-nowrap"],
+            "role": ["text-left", "text-nowrap"],
+            "created_at": ["text-left", "text-nowrap"],
+            "actions": ["text-left", "text-nowrap"]
+        }
+    },
+    "body": {
+        "data": [],
+        "styles": {
+            "name": ["text-left", "text-nowrap"],
+            "user" : ["text-left", "text-nowrap"],
+            "role": ["text-left", "text-nowrap"],
+            "created_at": ["text-left", "text-nowrap"],
+            "actions": ["flex justify-start items-center", "text-nowrap"]
+        }
+    }
+}

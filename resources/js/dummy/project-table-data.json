@@ -1,0 +1,25 @@
+{
+    "headers": {
+        "data": ["no", "name", "description","creator", "status", "created_at", "actions"],
+        "styles": {
+            "no": ["text-center", "text-nowrap"],
+            "name": ["text-left", "text-nowrap"],
+            "description": ["text-left", "text-nowrap"],
+            "creator": ["text-left", "text-nowrap"],
+            "status": ["text-left", "text-nowrap"],
+            "created_at": ["text-left", "text-nowrap"],
+            "actions": ["text-left", "text-nowrap"]
+        }
+    },
+    "body": {
+        "data": [],
+        "styles": {
+            "name": ["text-left", "text-nowrap"],
+            "description" : ["text-left", "text-nowrap"],
+            "creator":  ["text-left", "text-nowrap"],
+            "status":  ["text-left", "text-nowrap"],
+            "created_at": ["text-left", "text-nowrap"],
+            "actions": ["flex justify-start items-center", "text-nowrap"]
+        }
+    }
+}

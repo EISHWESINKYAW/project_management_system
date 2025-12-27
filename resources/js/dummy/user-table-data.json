@@ -1,0 +1,27 @@
+{
+    "headers": {
+        "data": ["no", "name", "email","phone","role","education","address","actions"],
+        "styles": {
+            "no": ["text-center", "text-nowrap"],
+            "name": ["text-left", "text-nowrap"],
+            "email": ["text-left", "text-nowrap"],
+            "phone": ["text-left", "text-nowrap"],
+            "role": ["text-left", "text-nowrap"],
+            "education": ["text-left", "text-nowrap"],
+            "address": ["text-left", "text-nowrap"],
+            "actions": ["text-left", "text-nowrap"]
+        }
+    },
+    "body": {
+        "data": [],
+        "styles": {
+            "name": ["text-left", "text-nowrap"],
+            "email": ["text-left", "text-nowrap"],
+            "phone": ["text-left", "text-nowrap"],
+            "role": ["text-left", "text-nowrap"],
+            "education": ["text-left", "text-nowrap"],
+            "address": ["text-left", "text-nowrap"],
+            "actions": ["flex justify-start items-center", "text-nowrap"]
+        }
+    }
+}

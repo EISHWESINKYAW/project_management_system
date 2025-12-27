@@ -1,0 +1,25 @@
+{
+    "headers": {
+        "data": ["no", "project", "name", "creator", "due_date", "status", "actions"],
+        "styles": {
+            "no": ["text-center", "text-nowrap"],
+            "project": ["text-left", "text-nowrap"],
+            "name": ["text-left", "text-nowrap"],
+            "creator": ["text-left", "text-nowrap"],
+            "due_date": ["text-left", "text-nowrap"],
+            "status": ["text-left", "text-nowrap"],
+            "actions": ["text-left", "text-nowrap"]
+        }
+    },
+    "body": {
+        "data": [],
+        "styles": {
+            "project": ["text-left", "text-nowrap"],
+            "name": ["text-left", "text-nowrap"],
+            "creator":  ["text-left", "text-nowrap"],
+            "due_date": ["text-left", "text-nowrap"],
+            "status": ["text-left", "text-nowrap"],
+            "actions": ["flex justify-start items-center", "text-nowrap"]
+        }
+    }
+}
