@@ -122,6 +122,36 @@ npm run dev
 If you are using real-time features:
 ```bash
 php artisan reverb:start
+   ```
+
+## 🏗️ Architecture
+
+```mermaid
+graph TD
+    Client[Client-Vue.js SPA]
+    
+    subgraph Backend
+        API[Laravel API]
+        Reverb[Reverb-WebSocket]
+        Worker[Queue Worker-Horizon]
+    end
+    
+    subgraph Infrastructure
+        DB[(PostgreSQL)]
+        Redis[(Redis)]
+        Files[Storage]
+    end
+
+    Client -- "HTTP Requests" --> API
+    Client -- "Real-time Events" <--> Reverb
+    
+    API -- "Query" --> DB
+    API -- "Dispatch Job" --> Redis
+    API -- "Broadcast" --> Reverb
+    API -- "Uploads" --> Files
+    
+    Worker -- "Process Job" --> Redis
+    Worker -- "Update Data" --> DB
 ```
 
 ## 📂 Project Structure
