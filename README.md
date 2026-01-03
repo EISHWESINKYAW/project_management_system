@@ -1,61 +1,139 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Project Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A comprehensive Project Management System built with **Laravel 12** and **Vue 3**. This application allows teams to manage projects, tasks, roles, and permissions effectively, with real-time updates and collaboration features.
 
-## About Laravel
+## 🚀 Tech Stack
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Backend
+- **Framework:** [Laravel 12](https://laravel.com)
+- **Language:** PHP 8.2+
+- **Database:** PostgreSQL (Default) / MySQL
+- **Real-time:** Laravel Reverb (WebSockets)
+- **Queue:** Laravel Horizon (Redis) / Database
+- **Authentication:** Laravel Sanctum
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Frontend
+- **Framework:** [Vue.js 3](https://vuejs.org/) (Composition API)
+- **Build Tool:** [Vite](https://vitejs.dev/)
+- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
+- **Routing:** Vue Router
+- **HTTP Client:** Axios
+- **UI Components:** Headless UI, Tabler Icons
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## ✨ Features
 
-## Learning Laravel
+- **Project Management:** Create, update, and manage projects.
+- **Task Management:** Assign tasks to users, track status, and set due dates.
+- **Role-Based Access Control (RBAC):**
+  - Manage Roles (e.g., Admin, Manager, Developer).
+  - Granular Permissions (View, Create, Edit, Delete).
+- **Collaboration:**
+  - Real-time comments on tasks.
+  - Real-time notifications.
+  - File attachments/uploads.
+- **Dashboard:** Overview of projects and tasks.
+- **User Management:** Handle user profiles and roles.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 🛠 Prerequisites
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Ensure you have the following installed on your machine:
+- [PHP](https://www.php.net/downloads) (v8.2 or higher)
+- [Composer](https://getcomposer.org/)
+- [Node.js](https://nodejs.org/) & NPM
+- [PostgreSQL](https://www.postgresql.org/) (or MySQL)
+- [Redis](https://redis.io/) (Optional, for Horizon/Queues)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 📦 Installation
 
-## Laravel Sponsors
+1. **Clone the repository:**
+   ```bash
+   git clone <repository-url>
+   cd project_management_system
+   ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+2. **Install Backend Dependencies:**
+   ```bash
+   composer install
+   ```
 
-### Premium Partners
+3. **Install Frontend Dependencies:**
+   ```bash
+   npm install
+   ```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+4. **Environment Setup:**
+   Copy the example environment file and configure your database credentials.
+   ```bash
+   cp .env.example .env
+   ```
+   Edit the `.env` file to match your database configuration:
+   ```env
+   DB_CONNECTION=pgsql
+   DB_HOST=127.0.0.1
+   DB_PORT=5432
+   DB_DATABASE=your_database_name
+   DB_USERNAME=your_username
+   DB_PASSWORD=your_password
+   ```
 
-## Contributing
+5. **Generate App Key:**
+   ```bash
+   php artisan key:generate
+   ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+6. **Run Migrations & Seeders:**
+   Create the database first, then run:
+   ```bash
+   php artisan migrate --seed
+   ```
+   *Note: The seeder typically creates default roles (Admin, etc.) and a default admin user.*
 
-## Code of Conduct
+7. **Link Storage:**
+   ```bash
+   php artisan storage:link
+   ```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 🏃‍♂️ Running the Application
 
-## Security Vulnerabilities
+This project is configured with a convenience script to run the backend server, queue worker, and frontend dev server concurrently.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+composer run dev
+```
 
-## License
+Or you can run them separately in different terminal tabs:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**Backend:**
+```bash
+php artisan serve
+```
+
+**Queue Worker:**
+```bash
+php artisan queue:listen
+```
+
+**Frontend:**
+```bash
+npm run dev
+```
+
+**Reverb (WebSockets):**
+If you are using real-time features:
+```bash
+php artisan reverb:start
+```
+
+## 📂 Project Structure
+
+- **`app/`**: Core PHP application logic (Models, Controllers, Events).
+- **`resources/js/`**: Vue.js frontend application.
+  - **`pages/`**: Vue page components.
+  - **`components/`**: Reusable UI components.
+  - **`composables/`**: Shared logic (Vue Composables).
+- **`routes/`**: API and Web routes.
+- **`database/`**: Migrations and Seeders.
+
+## 📄 License
+
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
