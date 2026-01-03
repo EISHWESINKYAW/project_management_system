@@ -23,8 +23,10 @@ class TaskDetailResource extends JsonResource
             'project' => [
                 'id' => $this->project->id,
                 'name' => $this->project->name,
+                'created_by' => $this->project->created_by,
             ],
             'created_by' => $this->creator?->name,
+            'created_by_id' => $this->created_by,
             'created_at' => $this->created_at?->format('Y-M-d H:i:s'),
             // 'collaborators' => $this->collaborators->map(function ($user) {
             //     return [

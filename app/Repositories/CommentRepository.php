@@ -29,6 +29,17 @@ class CommentRepository
         abort_if(!$commentable, 404, $request->input('type') . ' not found.');
         $authUser = auth_user();
 
+        // Check permissions for Task comments
+        if ($request->input('type') === Comment::TASK) {
+            $isTaskCreator = $commentable->created_by == $authUser->id;
+            $isProjectCreator = $commentable->project && $commentable->project->created_by == $authUser->id;
+            $isTaskCollaborator = $commentable->collaborators()->where('user_id', $authUser->id)->exists();
+
+            if (! ($isTaskCreator || $isProjectCreator || $isTaskCollaborator)) {
+                abort(403, 'You are not authorized to comment on this task.');
+            }
+        }
+
         $commentable->comments()->create([
             'content' => $request->input('content'),
             'parent_id' => $request->input('parent_id'),

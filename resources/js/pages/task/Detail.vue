@@ -18,7 +18,7 @@
             <TaskInfoCard v-else :task="taskDetail" />
             <div class="task-comment-section">
                 <CommentCard v-if="loading.detail" />
-                <Comment v-else :comment-id="taskId" comment-type="task" />
+                <Comment v-else :comment-id="taskId" comment-type="task" :can-comment="canComment" />
             </div>
         </div>
         <DotLoading v-if="loading.submit" :show-dots="false" />

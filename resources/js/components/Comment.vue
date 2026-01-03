@@ -2,10 +2,10 @@
     <div class="task-container col-span-2 bg-surface text-on-surface box-shadow rounded p-4">
         <div class="flex justify-between items-center mb-4">
             <h1 class="text-lg font-semibold">Comments</h1>
-            <SmallButton @click="handleNewTask" customClasses="bg-primary text-on-primary rounded py-1.5"
+            <SmallButton v-if="canComment" @click="handleNewTask" customClasses="bg-primary text-on-primary rounded py-1.5"
                 :icon="IconMessagePlus" />
         </div>
-        <div v-if="showCommentInput" class="flex gap-2 my-3">
+        <div v-if="showCommentInput && canComment" class="flex gap-2 my-3">
             <input v-model="commentText" placeholder="Write a comment..." @keyup.enter="addComment"
                 class="flex-1 px-3 py-1.5 rounded border border-grey-300 text-sm focus:outline-none focus:ring-2 focus:ring-primary" />
             <button @click="addComment"
@@ -28,8 +28,8 @@
 </template>
 
 <script setup>
-import { IconMessagePlus } from '@tabler/icons-vue';
-import { onMounted, ref } from 'vue';
+import { IconMessagePlus, IconChevronDown, IconChevronUp } from '@tabler/icons-vue';
+import { onMounted, ref, computed } from 'vue';
 import { checkPermissions } from '@/utils/helper.js'
 import CommentCard from './CommentCard.vue';
 import api from '@/utils/api';
@@ -43,6 +43,10 @@ const props = defineProps({
     commentType: {
         type: String,
         required: true
+    },
+    canComment: {
+        type: Boolean,
+        default: true
     }
 })
 
@@ -50,6 +54,14 @@ const showCommentInput = ref(false);
 const commentLoading = ref(false);
 const commentText = ref('');
 const comments = ref([]);
+const showAllComments = ref(false);
+
+const displayedComments = computed(() => {
+    if (showAllComments.value) {
+        return comments.value;
+    }
+    return comments.value.slice(0, 1);
+});
 
 onMounted(() => {
     fetchComments();
